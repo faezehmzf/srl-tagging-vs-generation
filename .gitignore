@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+# data is not redistributed (see data/README.md)
+data/*
+!data/README.md
+# model weights and logs
+*.pt
+results/logs/
+# per-sentence predictions contain the validation sentences
+results/**/predictions.jsonl

@@ -1,0 +1,10 @@
+matplotlib==3.11.2
+numpy==2.4.6
+protobuf==7.36.2
+pytest==9.2.0
+scikit-learn==1.9.1
+sentencepiece==0.2.2
+seqeval==1.2.2
+torch==2.15.0
+tqdm==4.70.1
+transformers==5.22.1

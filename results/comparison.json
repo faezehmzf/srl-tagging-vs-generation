@@ -1,0 +1,467 @@
+{
+  "role_answers": {
+    "always answer nothing": {
+      "ARG0": {
+        "n": 800,
+        "exact_match": 0.55375,
+        "token_f1": 0.55375,
+        "n_present": 357,
+        "token_f1_when_present": 0.0
+      },
+      "ARG1": {
+        "n": 800,
+        "exact_match": 0.1725,
+        "token_f1": 0.1725,
+        "n_present": 662,
+        "token_f1_when_present": 0.0
+      },
+      "ARG2": {
+        "n": 800,
+        "exact_match": 0.72625,
+        "token_f1": 0.72625,
+        "n_present": 219,
+        "token_f1_when_present": 0.0
+      },
+      "ARGM-TMP": {
+        "n": 800,
+        "exact_match": 0.915,
+        "token_f1": 0.915,
+        "n_present": 68,
+        "token_f1_when_present": 0.0
+      },
+      "ARGM-LOC": {
+        "n": 800,
+        "exact_match": 0.9875,
+        "token_f1": 0.9875,
+        "n_present": 10,
+        "token_f1_when_present": 0.0
+      },
+      "ALL": {
+        "n": 4000,
+        "exact_match": 0.671,
+        "token_f1": 0.671,
+        "n_present": 1316,
+        "token_f1_when_present": 0.0
+      }
+    },
+    "LSTM (baseline)": {
+      "ARG0": {
+        "n": 800,
+        "exact_match": 0.57375,
+        "token_f1": 0.6009249847374848,
+        "n_present": 357,
+        "token_f1_when_present": 0.2485713943697137
+      },
+      "ARG1": {
+        "n": 800,
+        "exact_match": 0.185,
+        "token_f1": 0.27933298711092835,
+        "n_present": 662,
+        "token_f1_when_present": 0.19556856448450552
+      },
+      "ARG2": {
+        "n": 800,
+        "exact_match": 0.7125,
+        "token_f1": 0.7555152378688564,
+        "n_present": 219,
+        "token_f1_when_present": 0.27585475020586764
+      },
+      "ARGM-TMP": {
+        "n": 800,
+        "exact_match": 0.92125,
+        "token_f1": 0.92125,
+        "n_present": 68,
+        "token_f1_when_present": 0.23529411764705882
+      },
+      "ARGM-LOC": {
+        "n": 800,
+        "exact_match": 0.9875,
+        "token_f1": 0.9875,
+        "n_present": 10,
+        "token_f1_when_present": 0.0
+      },
+      "ALL": {
+        "n": 4000,
+        "exact_match": 0.676,
+        "token_f1": 0.708904641943453,
+        "n_present": 1316,
+        "token_f1_when_present": 0.2238742916214405
+      }
+    },
+    "GRU (baseline)": {
+      "ARG0": {
+        "n": 800,
+        "exact_match": 0.58375,
+        "token_f1": 0.6147297286047287,
+        "n_present": 357,
+        "token_f1_when_present": 0.2851086355288036
+      },
+      "ARG1": {
+        "n": 800,
+        "exact_match": 0.19,
+        "token_f1": 0.2732121385558885,
+        "n_present": 662,
+        "token_f1_when_present": 0.1806188985569652
+      },
+      "ARG2": {
+        "n": 800,
+        "exact_match": 0.72875,
+        "token_f1": 0.7645393634143635,
+        "n_present": 219,
+        "token_f1_when_present": 0.2677237019702772
+      },
+      "ARGM-TMP": {
+        "n": 800,
+        "exact_match": 0.9125,
+        "token_f1": 0.9125,
+        "n_present": 68,
+        "token_f1_when_present": 0.19117647058823528
+      },
+      "ARGM-LOC": {
+        "n": 800,
+        "exact_match": 0.9875,
+        "token_f1": 0.9875,
+        "n_present": 10,
+        "token_f1_when_present": 0.0
+      },
+      "ALL": {
+        "n": 4000,
+        "exact_match": 0.6805,
+        "token_f1": 0.7104962461149962,
+        "n_present": 1316,
+        "token_f1_when_present": 0.22263296691488188
+      }
+    },
+    "BiLSTM + predicate flag": {
+      "ARG0": {
+        "n": 800,
+        "exact_match": 0.6775,
+        "token_f1": 0.7243990594029299,
+        "n_present": 357,
+        "token_f1_when_present": 0.603695371211046
+      },
+      "ARG1": {
+        "n": 800,
+        "exact_match": 0.53125,
+        "token_f1": 0.6840791389767783,
+        "n_present": 662,
+        "token_f1_when_present": 0.726983853748373
+      },
+      "ARG2": {
+        "n": 800,
+        "exact_match": 0.78375,
+        "token_f1": 0.8280970426011188,
+        "n_present": 219,
+        "token_f1_when_present": 0.5227289227438126
+      },
+      "ARGM-TMP": {
+        "n": 800,
+        "exact_match": 0.945,
+        "token_f1": 0.945,
+        "n_present": 68,
+        "token_f1_when_present": 0.5147058823529411
+      },
+      "ARGM-LOC": {
+        "n": 800,
+        "exact_match": 0.9875,
+        "token_f1": 0.9875,
+        "n_present": 10,
+        "token_f1_when_present": 0.0
+      },
+      "ALL": {
+        "n": 4000,
+        "exact_match": 0.785,
+        "token_f1": 0.8338150481961653,
+        "n_present": 1316,
+        "token_f1_when_present": 0.6430548577391031
+      }
+    },
+    "BiLSTM + GloVe": {
+      "ARG0": {
+        "n": 800,
+        "exact_match": 0.775,
+        "token_f1": 0.8080155597326647,
+        "n_present": 357,
+        "token_f1_when_present": 0.749054475591406
+      },
+      "ARG1": {
+        "n": 800,
+        "exact_match": 0.69875,
+        "token_f1": 0.7716026889776891,
+        "n_present": 662,
+        "token_f1_when_present": 0.8116044579790804
+      },
+      "ARG2": {
+        "n": 800,
+        "exact_match": 0.83875,
+        "token_f1": 0.86765916223869,
+        "n_present": 219,
+        "token_f1_when_present": 0.6718142912828863
+      },
+      "ARGM-TMP": {
+        "n": 800,
+        "exact_match": 0.96125,
+        "token_f1": 0.96125,
+        "n_present": 68,
+        "token_f1_when_present": 0.6764705882352942
+      },
+      "ARGM-LOC": {
+        "n": 800,
+        "exact_match": 0.98875,
+        "token_f1": 0.98875,
+        "n_present": 10,
+        "token_f1_when_present": 0.2
+      },
+      "ALL": {
+        "n": 4000,
+        "exact_match": 0.8525,
+        "token_f1": 0.8794554821898085,
+        "n_present": 1316,
+        "token_f1_when_present": 0.7597431069599044
+      }
+    },
+    "BiLSTM-CRF + GloVe": {
+      "ARG0": {
+        "n": 800,
+        "exact_match": 0.80375,
+        "token_f1": 0.8244821428571423,
+        "n_present": 357,
+        "token_f1_when_present": 0.7355342136854742
+      },
+      "ARG1": {
+        "n": 800,
+        "exact_match": 0.73125,
+        "token_f1": 0.7871778282991515,
+        "n_present": 662,
+        "token_f1_when_present": 0.8077677683373438
+      },
+      "ARG2": {
+        "n": 800,
+        "exact_match": 0.85875,
+        "token_f1": 0.8845350073902704,
+        "n_present": 219,
+        "token_f1_when_present": 0.6923653238000752
+      },
+      "ARGM-TMP": {
+        "n": 800,
+        "exact_match": 0.97375,
+        "token_f1": 0.97375,
+        "n_present": 68,
+        "token_f1_when_present": 0.7647058823529411
+      },
+      "ARGM-LOC": {
+        "n": 800,
+        "exact_match": 0.9925,
+        "token_f1": 0.9925,
+        "n_present": 10,
+        "token_f1_when_present": 0.5
+      },
+      "ALL": {
+        "n": 4000,
+        "exact_match": 0.872,
+        "token_f1": 0.892488995709313,
+        "n_present": 1316,
+        "token_f1_when_present": 0.7644042422775462
+      }
+    },
+    "RoBERTa-base": {
+      "ARG0": {
+        "n": 800,
+        "exact_match": 0.915,
+        "token_f1": 0.9202142857142858,
+        "n_present": 357,
+        "token_f1_when_present": 0.908043217286915
+      },
+      "ARG1": {
+        "n": 800,
+        "exact_match": 0.86125,
+        "token_f1": 0.8941873947364759,
+        "n_present": 662,
+        "token_f1_when_present": 0.932552742883959
+      },
+      "ARG2": {
+        "n": 800,
+        "exact_match": 0.91375,
+        "token_f1": 0.9286354889216866,
+        "n_present": 219,
+        "token_f1_when_present": 0.8214995029102703
+      },
+      "ARGM-TMP": {
+        "n": 800,
+        "exact_match": 0.9825,
+        "token_f1": 0.9825,
+        "n_present": 68,
+        "token_f1_when_present": 0.9264705882352942
+      },
+      "ARGM-LOC": {
+        "n": 800,
+        "exact_match": 0.99375,
+        "token_f1": 0.99375,
+        "n_present": 10,
+        "token_f1_when_present": 0.6
+      },
+      "ALL": {
+        "n": 4000,
+        "exact_match": 0.93325,
+        "token_f1": 0.9438574338744894,
+        "n_present": 1316,
+        "token_f1_when_present": 0.9045818658799079
+      }
+    },
+    "RoBERTa-base + CRF": {
+      "ARG0": {
+        "n": 800,
+        "exact_match": 0.9125,
+        "token_f1": 0.9148809523809522,
+        "n_present": 357,
+        "token_f1_when_present": 0.9100973722822464
+      },
+      "ARG1": {
+        "n": 800,
+        "exact_match": 0.8675,
+        "token_f1": 0.8965462544225413,
+        "n_present": 662,
+        "token_f1_when_present": 0.9293610325347933
+      },
+      "ARG2": {
+        "n": 800,
+        "exact_match": 0.915,
+        "token_f1": 0.9246420611393438,
+        "n_present": 219,
+        "token_f1_when_present": 0.8023454288195206
+      },
+      "ARGM-TMP": {
+        "n": 800,
+        "exact_match": 0.99,
+        "token_f1": 0.99,
+        "n_present": 68,
+        "token_f1_when_present": 0.9558823529411765
+      },
+      "ARGM-LOC": {
+        "n": 800,
+        "exact_match": 0.9925,
+        "token_f1": 0.9925,
+        "n_present": 10,
+        "token_f1_when_present": 0.6
+      },
+      "ALL": {
+        "n": 4000,
+        "exact_match": 0.9355,
+        "token_f1": 0.9437138535885672,
+        "n_present": 1316,
+        "token_f1_when_present": 0.9018658163786248
+      }
+    },
+    "RNN encoder-decoder + attention (beam 16)": {
+      "ARG0": {
+        "n": 800,
+        "exact_match": 0.65125,
+        "token_f1": 0.6657851731601733,
+        "n_present": 357,
+        "token_f1_when_present": 0.3378939454569707
+      },
+      "ARG1": {
+        "n": 800,
+        "exact_match": 0.24625,
+        "token_f1": 0.3381960951630071,
+        "n_present": 662,
+        "token_f1_when_present": 0.2531070636410964
+      },
+      "ARG2": {
+        "n": 800,
+        "exact_match": 0.7075,
+        "token_f1": 0.7258221916971916,
+        "n_present": 219,
+        "token_f1_when_present": 0.08519522081165913
+      },
+      "ARGM-TMP": {
+        "n": 800,
+        "exact_match": 0.92,
+        "token_f1": 0.92,
+        "n_present": 68,
+        "token_f1_when_present": 0.19117647058823528
+      },
+      "ARGM-LOC": {
+        "n": 800,
+        "exact_match": 0.9875,
+        "token_f1": 0.9875,
+        "n_present": 10,
+        "token_f1_when_present": 0.0
+      },
+      "ALL": {
+        "n": 4000,
+        "exact_match": 0.7025,
+        "token_f1": 0.727460692004075,
+        "n_present": 1316,
+        "token_f1_when_present": 0.24304161703366053
+      }
+    }
+  },
+  "span_micro_f1": {
+    "LSTM (baseline)": 0.1679324894514768,
+    "GRU (baseline)": 0.17341549295774647,
+    "BiLSTM + predicate flag": 0.5289747399702823,
+    "BiLSTM + GloVe": 0.6840926064227035,
+    "BiLSTM-CRF + GloVe": 0.7378716744913928,
+    "RoBERTa-base": 0.8682634730538922,
+    "RoBERTa-base + CRF": 0.8802417831507368
+  },
+  "params": {
+    "LSTM (baseline)": 780491,
+    "GRU (baseline)": 772171,
+    "BiLSTM + predicate flag": 823403,
+    "BiLSTM + GloVe": 4353543,
+    "BiLSTM-CRF + GloVe": 4353686,
+    "RoBERTa-base": 124664075,
+    "RoBERTa-base + CRF": 124664218,
+    "RNN encoder-decoder + attention (beam 16)": 6297268
+  },
+  "train_time_sec": {
+    "LSTM (baseline)": 12.6,
+    "GRU (baseline)": 30.1,
+    "BiLSTM + predicate flag": 61.3,
+    "BiLSTM + GloVe": 175.4,
+    "BiLSTM-CRF + GloVe": 297.3,
+    "RoBERTa-base": 1115.8,
+    "RoBERTa-base + CRF": 1104.1,
+    "RNN encoder-decoder + attention (beam 16)": 1439.4
+  },
+  "invalid_transitions": {
+    "LSTM (baseline)": [
+      439,
+      267
+    ],
+    "GRU (baseline)": [
+      397,
+      271
+    ],
+    "BiLSTM + predicate flag": [
+      190,
+      151
+    ],
+    "BiLSTM + GloVe": [
+      64,
+      54
+    ],
+    "BiLSTM-CRF + GloVe": [
+      0,
+      0
+    ],
+    "RoBERTa-base": [
+      24,
+      23
+    ],
+    "RoBERTa-base + CRF": [
+      0,
+      0
+    ]
+  },
+  "generator_copying": {
+    "RNN encoder-decoder + attention (beam 16)": {
+      "answer_tokens": 1375,
+      "not_in_sentence": 513,
+      "nonempty_answers": 911,
+      "contiguous_substring": 440
+    }
+  }
+}
