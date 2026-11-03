@@ -395,6 +395,50 @@
         "n_present": 1316,
         "token_f1_when_present": 0.24304161703366053
       }
+    },
+    "FLAN-T5-base (beam 4)": {
+      "ARG0": {
+        "n": 800,
+        "exact_match": 0.8925,
+        "token_f1": 0.8978502747252746,
+        "n_present": 357,
+        "token_f1_when_present": 0.8999445932219042
+      },
+      "ARG1": {
+        "n": 800,
+        "exact_match": 0.8525,
+        "token_f1": 0.8810544700397641,
+        "n_present": 662,
+        "token_f1_when_present": 0.9212138610752437
+      },
+      "ARG2": {
+        "n": 800,
+        "exact_match": 0.90875,
+        "token_f1": 0.9251281954629478,
+        "n_present": 219,
+        "token_f1_when_present": 0.7858564217824578
+      },
+      "ARGM-TMP": {
+        "n": 800,
+        "exact_match": 0.98125,
+        "token_f1": 0.98125,
+        "n_present": 68,
+        "token_f1_when_present": 0.9705882352941176
+      },
+      "ARGM-LOC": {
+        "n": 800,
+        "exact_match": 0.99375,
+        "token_f1": 0.99375,
+        "n_present": 10,
+        "token_f1_when_present": 0.7
+      },
+      "ALL": {
+        "n": 4000,
+        "exact_match": 0.92575,
+        "token_f1": 0.9358065880455971,
+        "n_present": 1316,
+        "token_f1_when_present": 0.8937890214151896
+      }
     }
   },
   "span_micro_f1": {
@@ -414,7 +458,8 @@
     "BiLSTM-CRF + GloVe": 4353686,
     "RoBERTa-base": 124664075,
     "RoBERTa-base + CRF": 124664218,
-    "RNN encoder-decoder + attention (beam 16)": 6297268
+    "RNN encoder-decoder + attention (beam 16)": 6297268,
+    "FLAN-T5-base (beam 4)": 247577856
   },
   "train_time_sec": {
     "LSTM (baseline)": 12.6,
@@ -424,7 +469,8 @@
     "BiLSTM-CRF + GloVe": 297.3,
     "RoBERTa-base": 1115.8,
     "RoBERTa-base + CRF": 1104.1,
-    "RNN encoder-decoder + attention (beam 16)": 1439.4
+    "RNN encoder-decoder + attention (beam 16)": 1439.4,
+    "FLAN-T5-base (beam 4)": 6028.2
   },
   "invalid_transitions": {
     "LSTM (baseline)": [
@@ -462,6 +508,12 @@
       "not_in_sentence": 513,
       "nonempty_answers": 911,
       "contiguous_substring": 440
+    },
+    "FLAN-T5-base (beam 4)": {
+      "answer_tokens": 3293,
+      "not_in_sentence": 1,
+      "nonempty_answers": 1358,
+      "contiguous_substring": 1349
     }
   }
 }

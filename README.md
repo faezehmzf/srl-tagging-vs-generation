@@ -9,7 +9,7 @@ Semantic role labeling (SRL) answers *who did what to whom, when and where* for 
 This project solves the same SRL task in two ways and measures both with one shared metric:
 
 1. **Tagging.** Label every word with a BIO tag (`B-ARG0`, `I-ARG1`, `O`, ...). The models range from a one-layer LSTM to a fine-tuned RoBERTa with a CRF output layer.
-2. **Generation as question answering.** Ask one question per role (*"what is the ARG0 of `accept`?"*) and generate the answer text. Two generators are used: an RNN encoder-decoder with attention trained from scratch, and a fine-tuned FLAN-T5 (results pending).
+2. **Generation as question answering.** Ask one question per role (*"what is the ARG0 of `accept`?"*) and generate the answer text. Two generators are used: an RNN encoder-decoder with attention trained from scratch, and a fine-tuned FLAN-T5.
 
 It asks three questions:
 
@@ -36,6 +36,7 @@ All models use fixed hyperparameters, and the reported numbers come from the las
 | RoBERTa-base | 0.868 | 0.933 | 0.905 | 124.7M | 18.6 min |
 | **RoBERTa-base + CRF** | **0.880** | **0.935** | 0.902 | 124.7M | 18.4 min |
 | RNN encoder-decoder + attention (beam 16) | — | 0.703 | 0.243 | 6.3M | 24.0 min |
+| FLAN-T5-base QA (beam 4) | — | 0.926 | 0.894 | 247.6M | 100.5 min |
 
 \* Measured on one Apple M5 laptop GPU (MPS).
 
@@ -52,6 +53,7 @@ Token F1 per role (role present):
 | BiLSTM-CRF + GloVe | 0.736 | 0.808 | 0.692 | 0.765 | 0.500 |
 | RoBERTa-base + CRF | 0.910 | 0.929 | 0.802 | 0.956 | 0.600 |
 | RNN encoder-decoder + attention | 0.338 | 0.253 | 0.085 | 0.191 | 0.000 |
+| FLAN-T5-base QA | 0.900 | 0.921 | 0.786 | 0.971 | 0.700 |
 
 ## What the results show
 
@@ -80,7 +82,21 @@ The diagnostics show why: generating answer text is much harder than labelling w
 - Its output vocabulary is built from the training data, so 9% of the gold answer words in validation (281 of 3,129) cannot be produced at all.
 - Beam search (size 16) barely helps over greedy decoding (token F1 0.243 vs 0.225). The model's errors are in what it learned, not in the search.
 
-**FLAN-T5 (pre-trained generator):** the training script is included (`scripts/train_t5_qa.py`). Its run is still in progress, so its results are not reported yet.
+**A pre-trained generator almost matches the best tagger.** FLAN-T5-base, fine-tuned for 2 epochs on the same questions, reaches token F1 0.894 on present roles, against 0.902 for RoBERTa + CRF and 0.243 for the RNN encoder-decoder. Its role exact match is 0.926, against 0.935 for RoBERTa + CRF. This suggests the question-answering formulation was not the main problem for the RNN generator. That model had to learn language and copying from 13k sentences, while FLAN-T5 starts from pre-training.
+
+FLAN-T5 has learned to copy:
+
+- 99.3% of its non-empty answers (1,349 of 1,358) are a contiguous piece of the sentence.
+- Only 1 of its 3,293 generated words is not in the sentence. It wrote *possibilitiess* where the gold answer has the misspelt *possibilitys*.
+- 8 of the 9 non-contiguous answers are the right answer with its backtick dropped (the data writes opening quotes as backticks). The backtick is not in T5's vocabulary: it becomes the unknown token, which is removed on decoding. 10 of the 1,316 gold answers contain one, so those can never be matched exactly.
+
+It leans towards answering. It gives an answer for 117 roles that are absent and misses 75 that are present; RoBERTa + CRF does 96 of each. Its weakest role is ARG2 (0.786), as for the taggers.
+
+It also costs more:
+
+- Twice the parameters of RoBERTa (247.6M vs 124.7M) and 5.4× the training time (100.5 vs 18.4 minutes).
+- Five generated answers per sentence, one per role, instead of one tagging pass. Generating the 4,000 validation answers took 5.7 minutes.
+- Its output is text, not positions. When a word occurs twice in the sentence, the answer does not say which one is meant, so span F1 cannot be computed for it.
 
 ### Pitfalls this data invites
 
@@ -121,7 +137,7 @@ python scripts/train_t5_qa.py --out results/flan_t5_base_qa
 python scripts/compare.py
 ```
 
-Every script picks CUDA, then Apple MPS, then CPU. On an Apple M5 the RNN taggers take minutes, each RoBERTa run about 18 minutes and the RNN encoder-decoder about 24 minutes. The FLAN-T5 script uses batches of 8 with 4-step gradient accumulation to fit in 16 GB of memory.
+Every script picks CUDA, then Apple MPS, then CPU. On an Apple M5 the RNN taggers take minutes, each RoBERTa run about 18 minutes, the RNN encoder-decoder about 24 minutes, and FLAN-T5 about 1 h 40 min plus 6 minutes of generation. The FLAN-T5 script uses batches of 8 with 4-step gradient accumulation to fit in 16 GB of memory.
 
 ## Layout
 

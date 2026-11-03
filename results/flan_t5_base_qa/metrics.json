@@ -1,0 +1,74 @@
+{
+  "config": {
+    "data_dir": "data",
+    "model": "google/flan-t5-base",
+    "epochs": 2,
+    "batch_size": 8,
+    "grad_accum": 4,
+    "lr": 0.0003,
+    "num_beams": 4,
+    "seed": 42,
+    "device": "mps",
+    "limit_train": 0,
+    "out": "results/flan_t5_base_qa",
+    "trainable_params": 247577856
+  },
+  "train_time_sec": 6028.2,
+  "generation_time_sec": 339.5,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.18228450184652112
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.0701092635297617
+    }
+  ],
+  "final_valid": {
+    "answers": {
+      "ARG0": {
+        "n": 800,
+        "exact_match": 0.8925,
+        "token_f1": 0.8978502747252746,
+        "n_present": 357,
+        "token_f1_when_present": 0.8999445932219042
+      },
+      "ARG1": {
+        "n": 800,
+        "exact_match": 0.8525,
+        "token_f1": 0.8810544700397641,
+        "n_present": 662,
+        "token_f1_when_present": 0.9212138610752437
+      },
+      "ARG2": {
+        "n": 800,
+        "exact_match": 0.90875,
+        "token_f1": 0.9251281954629478,
+        "n_present": 219,
+        "token_f1_when_present": 0.7858564217824578
+      },
+      "ARGM-TMP": {
+        "n": 800,
+        "exact_match": 0.98125,
+        "token_f1": 0.98125,
+        "n_present": 68,
+        "token_f1_when_present": 0.9705882352941176
+      },
+      "ARGM-LOC": {
+        "n": 800,
+        "exact_match": 0.99375,
+        "token_f1": 0.99375,
+        "n_present": 10,
+        "token_f1_when_present": 0.7
+      },
+      "ALL": {
+        "n": 4000,
+        "exact_match": 0.92575,
+        "token_f1": 0.9358065880455971,
+        "n_present": 1316,
+        "token_f1_when_present": 0.8937890214151896
+      }
+    }
+  }
+}

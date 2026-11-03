@@ -13,6 +13,7 @@
 | RoBERTa-base | 0.868 | 0.933 | 0.905 | 124.7M | 18.6 min |
 | RoBERTa-base + CRF | 0.880 | 0.935 | 0.902 | 124.7M | 18.4 min |
 | RNN encoder-decoder + attention (beam 16) | — | 0.703 | 0.243 | 6.3M | 24.0 min |
+| FLAN-T5-base (beam 4) | — | 0.926 | 0.894 | 247.6M | 100.5 min |
 
 ## Token F1 per role (only (sentence, role) pairs where the role is present)
 
@@ -26,6 +27,7 @@
 | RoBERTa-base | 0.908 | 0.933 | 0.821 | 0.926 | 0.600 |
 | RoBERTa-base + CRF | 0.910 | 0.929 | 0.802 | 0.956 | 0.600 |
 | RNN encoder-decoder + attention (beam 16) | 0.338 | 0.253 | 0.085 | 0.191 | 0.000 |
+| FLAN-T5-base (beam 4) | 0.900 | 0.921 | 0.786 | 0.971 | 0.700 |
 
 ## Evaluation pitfall: counting padding
 
@@ -54,36 +56,38 @@ Generators: is the answer copied from the sentence?
 | generator | answer tokens not in the sentence | non-empty answers that are a contiguous span of the sentence |
 |---|---|---|
 | RNN encoder-decoder + attention (beam 16) | 513/1375 (37.3%) | 440/911 (48.3%) |
+| FLAN-T5-base (beam 4) | 1/3293 (0.0%) | 1349/1358 (99.3%) |
 
 ## Examples (first short validation sentences with at least two roles)
 
 The most important thing about Disney is that it **[is]** a global brand .
 
-| role | gold | LSTM (baseline) | BiLSTM-CRF + GloVe | RoBERTa-base | RNN encoder-decoder + attention (beam 16) |
-|---|---|---|---|---|---|
-| ARG1 | it | about Disney | it | it | it |
-| ARG2 | a global brand | global brand | a global brand | a global brand | a recession |
+| role | gold | LSTM (baseline) | BiLSTM-CRF + GloVe | RoBERTa-base | RNN encoder-decoder + attention (beam 16) | FLAN-T5-base (beam 4) |
+|---|---|---|---|---|---|---|
+| ARG1 | it | about Disney | it | it | it | it |
+| ARG2 | a global brand | global brand | a global brand | a global brand | a recession | a global brand |
 
 Are they going to be different from what they **[are]** now ?
 
-| role | gold | LSTM (baseline) | BiLSTM-CRF + GloVe | RoBERTa-base | RNN encoder-decoder + attention (beam 16) |
-|---|---|---|---|---|---|
-| ARG1 | they | they | they | they | they |
-| ARG2 | what | from what | what now | what | how |
-| ARGM-TMP | now | ∅ | ∅ | now | ∅ |
+| role | gold | LSTM (baseline) | BiLSTM-CRF + GloVe | RoBERTa-base | RNN encoder-decoder + attention (beam 16) | FLAN-T5-base (beam 4) |
+|---|---|---|---|---|---|---|
+| ARG1 | they | they | they | they | they | they |
+| ARG2 | what | from what | what now | what | how | what |
+| ARGM-TMP | now | ∅ | ∅ | now | ∅ | now |
 
 Then , , on the bridge is Hong Kong and outside **[is]** Shenzhen .
 
-| role | gold | LSTM (baseline) | BiLSTM-CRF + GloVe | RoBERTa-base | RNN encoder-decoder + attention (beam 16) |
-|---|---|---|---|---|---|
-| ARG1 | Shenzhen | the | outside | Shenzhen | The wheat |
-| ARG2 | outside | ∅ | Shenzhen | outside | in |
+| role | gold | LSTM (baseline) | BiLSTM-CRF + GloVe | RoBERTa-base | RNN encoder-decoder + attention (beam 16) | FLAN-T5-base (beam 4) |
+|---|---|---|---|---|---|---|
+| ARG1 | Shenzhen | the | outside | Shenzhen | The wheat | Shenzhen |
+| ARG2 | outside | ∅ | Shenzhen | outside | in | Hong Kong |
+| ARGM-TMP | ∅ | ∅ | ∅ | ∅ | ∅ | Then |
 
 And we 're going to get **[started]** here /.
 
-| role | gold | LSTM (baseline) | BiLSTM-CRF + GloVe | RoBERTa-base | RNN encoder-decoder + attention (beam 16) |
-|---|---|---|---|---|---|
-| ARG0 | we | we | we | ∅ | we |
-| ARG1 | ∅ | ∅ | ∅ | we | we |
-| ARGM-LOC | here | ∅ | here | here | ∅ |
+| role | gold | LSTM (baseline) | BiLSTM-CRF + GloVe | RoBERTa-base | RNN encoder-decoder + attention (beam 16) | FLAN-T5-base (beam 4) |
+|---|---|---|---|---|---|---|
+| ARG0 | we | we | we | ∅ | we | ∅ |
+| ARG1 | ∅ | ∅ | ∅ | we | we | we |
+| ARGM-LOC | here | ∅ | here | here | ∅ | here |
 
