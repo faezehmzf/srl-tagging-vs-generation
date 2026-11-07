@@ -24,4 +24,5 @@ $PY scripts/train_transformer_tagger.py --crf --out results/roberta_base_crf
 $PY scripts/train_t5_qa.py --out results/flan_t5_base_qa
 
 $PY scripts/compare.py
+$PY scripts/plot_comparison.py
 $PY -m pytest -q tests
