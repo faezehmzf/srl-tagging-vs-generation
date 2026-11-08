@@ -29,7 +29,7 @@
 | RNN encoder-decoder + attention (beam 16) | 0.338 | 0.253 | 0.085 | 0.191 | 0.000 |
 | FLAN-T5-base (beam 4) | 0.900 | 0.921 | 0.786 | 0.971 | 0.700 |
 
-## Evaluation pitfall: counting padding
+## Counting padding (a common evaluation mistake)
 
 The same LSTM baseline evaluated three ways (padding scored as `O` during training and evaluation):
 

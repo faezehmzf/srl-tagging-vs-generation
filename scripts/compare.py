@@ -8,7 +8,7 @@
   match comes from absent roles.
 * Diagnostics: invalid BIO transitions (taggers) and generated words that do
   not occur in the sentence (generators).
-* The evaluation pitfall: token accuracy with padding counted.
+* A common evaluation mistake: token accuracy with padding counted.
 
 Outputs: results/comparison.md, results/comparison.json
 """
@@ -101,7 +101,7 @@ def main():
     pit = os.path.join(RES, "pitfall_padding", "metrics.json")
     if os.path.exists(pit):
         m = json.load(open(pit))["final_valid"]
-        lines += ["", "## Evaluation pitfall: counting padding", "",
+        lines += ["", "## Counting padding (a common evaluation mistake)", "",
                   "The same LSTM baseline evaluated three ways (padding scored as `O` during training and evaluation):", "",
                   f"- token accuracy including padding: **{m['token_acc_incl_padding']:.3f}**",
                   f"- token accuracy on real tokens: {m['token_acc']:.3f} (always predicting `O` gives 0.842)",

@@ -6,7 +6,7 @@ Examples:
     # BiLSTM-CRF with GloVe and a predicate indicator
     python scripts/train_tagger.py --bidirectional --verb-flag-dim 16 --glove data/glove/glove.6B.300d.txt \\
         --hidden-dim 128 --num-layers 2 --dropout 0.3 --crf --epochs 15 --out results/bilstm_crf_glove
-    # evaluation pitfall: score padding positions as 'O' (inflates accuracy)
+    # common mistake: score padding positions as 'O' (inflates accuracy)
     python scripts/train_tagger.py --combine add --count-padding --out results/pitfall_padding
 """
 import argparse
@@ -44,7 +44,7 @@ def run_epoch(model, loader, device, criterion, count_padding, optimizer=None, c
             if model.crf is not None:
                 loss = model.crf.nll(logits, labels, real)
             else:
-                # pitfall mode: padding positions labelled 'O' and trained/scored like real tokens
+                # --count-padding: padding positions labelled 'O' and trained/scored like real tokens
                 target = labels.masked_fill(~real, LABEL2ID["O"]) if count_padding else labels
                 loss = criterion(logits.reshape(-1, logits.size(-1)), target.reshape(-1))
             if training:
@@ -74,7 +74,7 @@ def main():
     ap.add_argument("--data-dir", default="data")
     ap.add_argument("--cell", choices=["lstm", "gru"], default="lstm")
     ap.add_argument("--combine", choices=["concat", "add"], default="concat")
-    ap.add_argument("--count-padding", action="store_true", help="evaluation pitfall: score padding as 'O'")
+    ap.add_argument("--count-padding", action="store_true", help="score padding as 'O' (inflates token accuracy)")
     ap.add_argument("--bidirectional", action="store_true")
     ap.add_argument("--verb-flag-dim", type=int, default=0)
     ap.add_argument("--glove", default=None, help="initialise word embeddings from this GloVe file")

@@ -163,7 +163,7 @@ The source and licence of the copy used are not documented, so it is **not inclu
 - Transfer learning from pre-trained word vectors and from a pre-trained transformer.
 - Sequence-to-sequence generation with attention, teacher forcing and beam search; copying vs. hallucination.
 - Text-to-text fine-tuning (FLAN-T5) and its tokenizer limits.
-- Evaluation pitfalls: absent-role baselines, counting padding, and non-deterministic GPU runs.
+- Misleading evaluation: absent-role baselines, counting padding, and non-deterministic GPU runs.
 
 ## Limitations
 

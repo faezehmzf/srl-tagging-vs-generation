@@ -129,7 +129,7 @@ It also costs more:
 - Five generated answers per sentence, one per role, instead of one tagging pass. Generating the 4,000 validation answers took 5.7 minutes.
 - Its output is text, not positions. When a word occurs twice in the sentence, the answer does not say which one is meant, so span F1 cannot be computed for it.
 
-### Pitfalls this data invites
+### Misleading numbers on this data
 
 - **About two-thirds of the questions have no answer.** On those, "always answer nothing" already scores 0.671 exact match. Any role-level score that includes absent roles needs that baseline beside it, which is why the main shared metric is restricted to present roles.
 - **Counting padding inflates accuracy.** The baseline LSTM was rerun with padding scored as `O` and the two hidden states summed instead of concatenated (`results/pitfall_padding`). Its token accuracy is 0.917 with padding counted, 0.844 on real words (no better than always `O` at 0.842), and its span F1 is 0.136.
